@@ -304,7 +304,7 @@
 <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="description"><a href="#description" class="headerlink" title="description"></a>description</h3><p>There is a public bike service in Hangzhou City which provides great convenience to the tourists from all over the world. One may rent a bike at any station and return it to any other stations in the city.</p>
 <p>The Public Bike Management Center (PBMC) keeps monitoring the real-time capacity of all the stations. A station is said to be in perfect condition if it is exactly half-full. If a station is full or empty, PBMC will collect or send bikes to adjust the condition of that station to <strong>perfect</strong>. And more, all the stations on the way will be adjusted as well.</p>
 <p>When a problem station is reported, PBMC will always choose the shortest path to reach that station. If there are more than one shortest path, the one that requires the least number of bikes sent from PBMC will be chosen.</p>
-<p><img src="./PAT甲级真题-1018-Public-Bike-Management/001.jpg" alt="示意图"></p>
+<p><img src="./001.jpg" alt="示意图"></p>
 <p>The above figure illustrates an example. The stations are represented by vertices and the roads correspond to the edges. The number on an edge is the time taken to reach one end station from another. The number written inside a vertex $S$ is the current number of bikes stored at $S$. Given that the maximum capacity of each station is 10. To solve the problem at $S_3$, we have 2 different shortest paths:</p>
 <ol>
 <li>PBMC -&gt; $S_1$-&gt; $S_3$. In this case, 4 bikes must be sent from PBMC, because we can collect 1 bike from $S_1$ and then take 5 bikes to $S_3$, so that both stations will be in perfect conditions.</li>
