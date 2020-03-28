@@ -229,6 +229,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com2020/03/28/PAT甲级真题-1075-PAT-Judge/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iblackholmes">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IBLACKHOLMES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2020/03/28/PAT甲级真题-1075-PAT-Judge/" itemprop="url">PAT甲级真题-1075 PAT Judge</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-28T19:12:58+08:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h2><p><a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805393241260032" target="_blank" rel="noopener">https://pintia.cn/problem-sets/994805342720868352/problems/994805393241260032</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="description"><a href="#description" class="headerlink" title="description"></a>description</h3><p>The ranklist of PAT is generated from the status list, which shows the scores of the submissions. This time you are supposed to generate the ranklist for PAT.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h3><p>Each input file contains one test case. For each case, the first line contains 3 positive integers, $N$ ($\leq10^4$), the total number of users, $K$ ($\leq5$), the total number of problems, and $M$ ($\leq10^5$), the total number of submissions. It is then assumed that the user id’s are 5-digit numbers from 00001 to $N$, and the problem id’s are from 1 to $K$. The next line contains $K$ positive integers p[i] (i=1, …, K), where p[i] corresponds to the full mark of the i-th problem. Then $M$ lines follow, each gives the information of a submission in the following format:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_id problem_id partial_score_obtained</span><br></pre></td></tr></table></figure></p>
+<p>where partial_score_obtained is either −1 if the submission cannot even pass the compiler, or is an integer in the range [0, p[problem_id]]. All the numbers in a line are separated by a space.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h3><p>For each test case, you are supposed to output the ranklist in the following format:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rank user_id total_score s[1] ... s[K]</span><br></pre></td></tr></table></figure></p>
+<p>where rank is calculated according to the total_score, and all the users with the same total_score obtain the same rank; and s[i] is the partial score obtained for the i-th problem. If a user has never submitted a solution for a problem, then “-“ must be printed at the corresponding position. If a user has submitted several solutions to solve one problem, then the highest score will be counted.</p>
+<p>The ranklist must be printed in non-decreasing order of the ranks. For those who have the same rank, users must be sorted in nonincreasing order according to the number of perfectly solved problems. And if there is still a tie, then they must be printed in increasing order of their id’s. For those who has never submitted any solution that can pass the compiler, or has never submitted any solution, they must NOT be shown on the ranklist. It is guaranteed that at least one user can be shown on the ranklist.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">7 4 20</span><br><span class="line">20 25 25 30</span><br><span class="line">00002 2 12</span><br><span class="line">00007 4 17</span><br><span class="line">00005 1 19</span><br><span class="line">00007 2 25</span><br><span class="line">00005 1 20</span><br><span class="line">00002 2 2</span><br><span class="line">00005 1 15</span><br><span class="line">00001 1 18</span><br><span class="line">00004 3 25</span><br><span class="line">00002 2 25</span><br><span class="line">00005 3 22</span><br><span class="line">00006 4 -1</span><br><span class="line">00001 2 18</span><br><span class="line">00002 1 20</span><br><span class="line">00004 1 15</span><br><span class="line">00002 4 18</span><br><span class="line">00001 3 4</span><br><span class="line">00001 4 2</span><br><span class="line">00005 2 -1</span><br><span class="line">00004 2 0</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 00002 63 20 25 - 18</span><br><span class="line">2 00005 42 20 0 22 -</span><br><span class="line">2 00007 42 - 25 - 17</span><br><span class="line">2 00001 42 18 18 4 2</span><br><span class="line">5 00004 40 15 0 25 -</span><br></pre></td></tr></table></figure>
+<h2 id="分析与思路"><a href="#分析与思路" class="headerlink" title="分析与思路"></a>分析与思路</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出用户提交记录，输出所有用户的排名。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这道题的主体思路很简单，记录用户的提交，排序，再输出符合要求的用户即可。但对于用户是否输出、输出什么值有几个细节需要注意：</p>
+<ol>
+<li>如果该用户某一题没有提交过，则对应这道题的分数输出“-”；如果该用户提交了，但是没有通过编译，则对应这道题的分数输出0. 因此使用一个初始值为0的scores数组记录用户每道题的最高分，并用一个submit数组记录用户提交情况；</li>
+<li>从没提交过，或者所有提交都不通过的用户不予输出。这里将总分sum设置初值为一个小于0的数，当读入的分数不大于0时，总分不会更新，这样可以通过判断总分是否为初值，若为初值则不输出；当读入的分数大于等于0时候，若大于当前值，则减去当前值即总分增加量。同时，总分小于0的权值低，遇到总分小于零的用户，其后面所有用户总分也不可能大于零，结束输出循环；</li>
+<li>提交编译通过但得分为0的用户仍需要输出。当更新最高分时，使用的判断是“$\leq$”，这是因为总分初值为负数，而scores初值为0，当提交编译通过，但得分为0时，需要将总分初值置为0；</li>
+<li>总分最高的排在前面；若总分相同，则完美题解数量多的排在前面；若仍然相同，则按照ID升序排序。</li>
+</ol>
+<p>本次题解使用两次循环：</p>
+<ol>
+<li>第一次循环读入数据，并更新用户的总分、单题最高分、完美题解数量；</li>
+<li>排序后，进行第二次循环，输出答案。当遇到总分为0的用户，跳出循环，输出结束。</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct user &#123;</span><br><span class="line">	int ID = -1, sum = 0x80000000, perCnt = 0;</span><br><span class="line">	vector&lt;int&gt; scores;</span><br><span class="line">	vector&lt;bool&gt; perP, submit;</span><br><span class="line">&#125;;</span><br><span class="line">bool cmp(user&amp; U1, user&amp; U2) &#123;</span><br><span class="line">	if (U1.sum != U2.sum) return U1.sum &gt; U2.sum;</span><br><span class="line">	if (U1.perCnt != U2.perCnt) return U1.perCnt &gt; U2.perCnt;</span><br><span class="line">	return U1.ID &lt; U2.ID;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solution() &#123;</span><br><span class="line">	// read in data</span><br><span class="line">	int N, K, M, uID, pID, s, rank;</span><br><span class="line">	scanf(&quot;%d %d %d&quot;, &amp;N, &amp;K, &amp;M);</span><br><span class="line">	vector&lt;int&gt; fScore(K + 1, 0);</span><br><span class="line">	for (int k = 1; k &lt;= K; ++k) scanf(&quot;%d&quot;, &amp;fScore[k]);</span><br><span class="line">	vector&lt;user&gt; Us(N + 1);</span><br><span class="line">	for (int m = 0; m &lt; M; ++m) &#123;</span><br><span class="line">		scanf(&quot;%d %d %d&quot;, &amp;uID, &amp;pID, &amp;s);</span><br><span class="line"></span><br><span class="line">		// initialize user if NOT</span><br><span class="line">		if (Us[uID].scores.empty()) &#123;</span><br><span class="line">			Us[uID].ID = uID;</span><br><span class="line">			Us[uID].scores.resize(K + 1, 0);</span><br><span class="line">			Us[uID].perP.resize(K + 1, false);</span><br><span class="line">			Us[uID].submit.resize(K + 1, false);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		Us[uID].submit[pID] = true;</span><br><span class="line"></span><br><span class="line">		// update the highest score</span><br><span class="line">		if (Us[uID].scores[pID] &lt;= s) &#123;</span><br><span class="line">            if (Us[uID].sum &lt; 0) Us[uID].sum = 0;</span><br><span class="line">			Us[uID].sum += s - Us[uID].scores[pID];</span><br><span class="line">			Us[uID].scores[pID] = s;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		// update the number of perfect solved problems</span><br><span class="line">		if (!Us[uID].perP[pID] &amp;&amp; Us[uID].scores[pID] == fScore[pID]) &#123;</span><br><span class="line">			Us[uID].perP[pID] = true;</span><br><span class="line">			Us[uID].perCnt++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	sort(Us.begin() + 1, Us.end(), cmp);</span><br><span class="line">	s = Us[1].sum; rank = 1;</span><br><span class="line">	for (int n = 1; n &lt;= N; ++n) &#123;</span><br><span class="line">		if (Us[n].sum &lt; 0) break;</span><br><span class="line">		if (Us[n].sum != s) &#123;</span><br><span class="line">			rank = n;</span><br><span class="line">			s = Us[n].sum;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;%d %05d %d&quot;, rank, Us[n].ID, Us[n].sum &lt; 0 ? 0 : Us[n].sum);</span><br><span class="line">		for (int k = 1; k &lt;= K; ++k) &#123;</span><br><span class="line">			if (!Us[n].submit[k]) printf(&quot; -&quot;);</span><br><span class="line">			else printf(&quot; %d&quot;, Us[n].scores[k]);</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123; solution(); return 0;&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com2020/03/27/PAT甲级真题-1018-Public-Bike-Management/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -402,7 +543,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
