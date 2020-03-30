@@ -229,6 +229,224 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com2020/03/30/PAT甲级真题-1026-Table-Tennis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iblackholmes">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IBLACKHOLMES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2020/03/30/PAT甲级真题-1026-Table-Tennis/" itemprop="url">PAT甲级真题-1026.Table Tennis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T09:00:27+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="categories/编程之旅/" itemprop="url" rel="index">
+                    <span itemprop="name">编程之旅</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h2><p><a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805472333250560" target="_blank" rel="noopener">https://pintia.cn/problem-sets/994805342720868352/problems/994805472333250560</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>A table tennis club has N tables available to the public. The tables are numbered from 1 to N. For any pair of players, if there are some tables open when they arrive, they will be assigned to the available table with the smallest number. If all the tables are occupied, they will have to wait in a queue. It is assumed that every pair of players can play for at most 2 hours.</p>
+<p>Your job is to count for everyone in queue their waiting time, and for each table the number of players it has served for the day.</p>
+<p>One thing that makes this procedure a bit complicated is that the club reserves some tables for their VIP members. When a VIP table is open, the first VIP pair in the queue will have the priviledge to take it. However, if there is no VIP in the queue, the next pair of players can take it. On the other hand, if when it is the turn of a VIP pair, yet no VIP table is available, they can be assigned as any ordinary players.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h3><p>Each input file contains one test case. For each case, the first line contains an integer N ($\leq$10000) - the total number of pairs of players. Then N lines follow, each contains 2 times and a VIP tag: HH:MM:SS - the arriving time, P - the playing time in minutes of a pair of players, and tag - which is 1 if they hold a VIP card, or 0 if not. It is guaranteed that the arriving time is between 08:00:00 and 21:00:00 while the club is open. It is assumed that no two customers arrives at the same time. Following the players’ info, there are 2 positive integers: K ($\leq$100) - the number of tables, and M (&lt; K) - the number of VIP tables. The last line contains M table numbers.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h3><p>For each test case, first print the arriving time, serving time and the waiting time for each pair of players in the format shown by the sample. Then print in a line the number of players served by each table. Notice that the output must be listed in chronological order of the serving time. The waiting time must be rounded up to an integer minute(s). If one cannot get a table before the closing time, their information must NOT be printed.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">20:52:00 10 0</span><br><span class="line">08:00:00 20 0</span><br><span class="line">08:02:00 30 0</span><br><span class="line">20:51:00 10 0</span><br><span class="line">08:10:00 5 0</span><br><span class="line">08:12:00 10 1</span><br><span class="line">20:50:00 10 0</span><br><span class="line">08:01:30 15 1</span><br><span class="line">20:53:00 10 1</span><br><span class="line">3 1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">08:00:00 08:00:00 0</span><br><span class="line">08:01:30 08:01:30 0</span><br><span class="line">08:02:00 08:02:00 0</span><br><span class="line">08:12:00 08:16:30 5</span><br><span class="line">08:10:00 08:20:00 10</span><br><span class="line">20:50:00 20:50:00 0</span><br><span class="line">20:51:00 20:51:00 0</span><br><span class="line">20:52:00 20:52:00 0</span><br><span class="line">3 3 2</span><br></pre></td></tr></table></figure>
+<h2 id="分析与思路"><a href="#分析与思路" class="headerlink" title="分析与思路"></a>分析与思路</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>一家兵乓球俱乐部，营业时间是8:00-21:00，有N张球桌，其中K张是VIP球桌，球桌最长可供娱乐时间为2小时。</p>
+<p>俱乐部服务规则如下：</p>
+<ul>
+<li>当有顾客到来时，顾客会优先选择序号最小的可用球桌，包括普通球桌和VIP球桌，如果没有球桌可用，就排队等候。</li>
+<li>对于VIP顾客而言，他们会优先选择序号最小的可用VIP球桌，再考虑序号最小的普通球桌，如果没有球桌可用，依旧排队等候。</li>
+<li>当一张普通球桌可用时，会优先提供给队列中最早到达的顾客，无论是普通顾客还是VIP顾客。</li>
+<li>当一张VIP球桌可用时，会优先提供给队列中最早到达的VIP顾客，再考虑队列中最早到达的普通顾客。</li>
+</ul>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>这是一道模拟题，需要考虑的case较为复杂，一不留神就很容易卡住。主要思路有两大方向：人选桌子，or桌子选人。两者的实现流程也非常相似：</p>
+<ol>
+<li><p>人选桌子</p>
+<blockquote>
+<p>S1. 先确定当前顾客是否是VIP顾客，是则进入S2，否则进入S3；<br>S2. 当前顾客为VIP顾客，检查当前是否有VIP桌子空闲，如果有则分配，否则进入S3；<br>S3. 当前顾客非VIP顾客，或者没有空闲的VIP桌子，则选择序号最小的空闲桌子</p>
+</blockquote>
+</li>
+<li><p>桌子选人</p>
+<blockquote>
+<p>S1. 先确定当前桌子是否是VIP桌子，是则进入S2，否则进入S3；<br>S2. 当前桌子为VIP桌子，检查当前队列中是否有VIP顾客，如果有，则分给桌子给最先到达的VIP顾客，否则进入S3<br>S3. 当前桌子非VIP桌子，或者没有VIP顾客再队列中，则分配桌子给最先到达的顾客</p>
+</blockquote>
+</li>
+</ol>
+<p>这里的题解采用方法二：桌子选人。（采用方法一的题解看<a href="https://blog.csdn.net/jmlikun/article/details/49821845" target="_blank" rel="noopener">这里</a>[^2]）.</p>
+<p>一些变量说明：</p>
+<ul>
+<li><p>首先设定两个结构体：<kbd>customer</kbd>和<kbd>table</kbd>，分别存储顾客和球桌的相关信息。因为输入的顾客信息是无序的，需要根据顾客的到达时间排序。</p>
+</li>
+<li><p>这里通过set模拟优先队列，优先级设为[可用时间最早，序号最小]。设立两个优先队列：<kbd>tabQ</kbd>和<kbd>vipTabQ</kbd>，分别储存所有桌子的优先队列和VIP桌子的优先队列。</p>
+</li>
+<li><p>设置<kbd>cusIdx</kbd>和<kbd>vipCusIdx</kbd>，分别指向下一个最早的顾客，和从cusIdx开始的下一个最早VIP顾客。</p>
+</li>
+</ul>
+<p>桌子分配流程如下：</p>
+<ul>
+<li>循环初始判断：<ul>
+<li>当cusIdx大于N(说明所有顾客都服务完)，跳出循环</li>
+<li>当下一个顾客到达的时间超过21:00，或者桌子的最早可用时间超过21:00(说明往后的顾客都不能在俱乐部关门之前获得服务)，则跳出循环。</li>
+<li>同时注意，VIP桌子有可能会跳过cusIdx指向的当前顾客，而服务vipCusIdx指向的VIP顾客，因此如果当前顾客被服务过了，就跳过之。</li>
+<li>当vipCusIdx\&lt;cusIdx时，更新vipCusIdx；</li>
+</ul>
+</li>
+<li>分类讨论当前桌子队列的第一张桌子。如果当前桌子是VIP桌子，那么<ul>
+<li>若当前顾客是VIP顾客，或没有VIP顾客在队列中，直接分配</li>
+<li>若当前顾客非VIP顾客，判断顾客队列中是否有VIP顾客(通过vipCusIdx指向的顾客的到达时间和当前桌子可用时间判断)，如果是，则分配当前桌子给VIP顾客，更新vipCusIdx值</li>
+</ul>
+</li>
+<li>如果当前桌子是普通桌子，那么对顾客队列中第一人进行分类讨论<ul>
+<li>若当前顾客是VIP顾客，并且有VIP桌子空闲，将VIP桌子分配给该顾客</li>
+<li>若当前顾客非VIP顾客，或者无VIP桌子空闲，将当前桌子分配给该顾客</li>
+</ul>
+</li>
+</ul>
+<p>分配完后，通过顾客被服务时间再进行排序，输出即可。</p>
+<p>最后要强调的是！！也是我被卡了很久一点的是！！顾客等待时间的进位是按照四舍五入的，也就是说大于等于30s的进一分钟，否则舍去。最后一个测试用例就是检验这个30s的。代码一刷的时候没明白，以为是逻辑有漏洞，暂时跳过这道题…二刷的时候仍然是卡在了最后一个测试点😂，实在是太过分了/(ㄒoㄒ)/！！最后是根据<a href="https://blog.csdn.net/jmlikun/article/details/49821845" target="_blank" rel="noopener">这篇博文</a>[^2]提到的测试用例才反应过来（其它比较重要的测试用例也可以看看(*\^_\^*)）</p>
+<p>简单记录一下两种实现四舍五入进位方式的方法：</p>
+<ol>
+<li><p>显示编写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cus[cusIdx].wait = cus[cusIdx].ser - cus[cusIdx].arr;</span><br><span class="line">cus[cusIdx].wait = cus[cusIdx].wait % 60 &lt; 30 ? cus[cusIdx].wait / 60 : cus[cusIdx].wait / 60 + 1;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用cmath下的<kbd>round</kbd>[^1]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">round((cus[cusIdx].ser - cus[cusIdx].arr) / 60.0);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 28800 = 8 * 60 * 60</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">customer</span> &#123;</span> <span class="keyword">int</span> arr = <span class="number">28800</span>, play = <span class="number">0</span>, isVip = <span class="number">0</span>, ser = <span class="number">86400</span>, wait = <span class="number">0</span>; &#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmpByArr</span><span class="params">(customer&amp; cus1, customer&amp; cus2)</span> </span>&#123; <span class="keyword">return</span> cus1.arr &lt; cus2.arr; &#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmpBySer</span><span class="params">(customer&amp; cus1, customer&amp; cus2)</span> </span>&#123; <span class="keyword">return</span> cus1.ser == cus2.ser ? cus1.arr &lt; cus2.arr : cus1.ser &lt; cus2.ser; &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">table</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> avail = <span class="number">28800</span>, cnt = <span class="number">0</span>, isVip = <span class="number">0</span>, idx = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> table&amp; tab) <span class="keyword">const</span> &#123; <span class="keyword">return</span> avail == tab.avail ? idx &lt; tab.idx : avail &lt; tab.avail; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// server customer a table and update table queue</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">serCustomerWithTable</span><span class="params">(<span class="keyword">int</span> cusIdx, <span class="keyword">int</span> tabIdx, <span class="built_in">vector</span>&lt;customer&gt;&amp; cus, <span class="built_in">vector</span>&lt;table&gt;&amp; tabs, <span class="built_in">set</span>&lt;table&gt;&amp; tabQ, <span class="built_in">set</span>&lt;table&gt;&amp; vipTabQ)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (cus[cusIdx].arr &gt;= <span class="number">75600</span> || tabs[tabIdx].avail &gt;= <span class="number">75600</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	tabQ.erase(tabQ.find(tabs[tabIdx]));</span><br><span class="line">	<span class="keyword">if</span> (tabs[tabIdx].isVip) vipTabQ.erase(vipTabQ.find(tabs[tabIdx]));</span><br><span class="line"></span><br><span class="line">	cus[cusIdx].ser = cus[cusIdx].arr &gt;= tabs[tabIdx].avail ? cus[cusIdx].arr : tabs[tabIdx].avail;</span><br><span class="line">	cus[cusIdx].wait = cus[cusIdx].ser - cus[cusIdx].arr;</span><br><span class="line">	cus[cusIdx].wait = cus[cusIdx].wait % <span class="number">60</span> &lt; <span class="number">30</span> ? cus[cusIdx].wait / <span class="number">60</span> : cus[cusIdx].wait / <span class="number">60</span> + <span class="number">1</span>;</span><br><span class="line">	tabs[tabIdx].avail = cus[cusIdx].ser + cus[cusIdx].play;</span><br><span class="line">	tabs[tabIdx].cnt++;</span><br><span class="line"></span><br><span class="line">	tabQ.insert(tabs[tabIdx]);</span><br><span class="line">	<span class="keyword">if</span> (tabs[tabIdx].isVip) vipTabQ.insert(tabs[tabIdx]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get next vip customer index from beginIdx</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getNextVipCusIdx</span><span class="params">(<span class="keyword">int</span> beginIdx, <span class="built_in">vector</span>&lt;customer&gt;&amp; cus)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (beginIdx &lt; cus.size()) &#123;</span><br><span class="line">		<span class="keyword">if</span> (cus[beginIdx].isVip) <span class="keyword">return</span> beginIdx;</span><br><span class="line">		beginIdx++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solution</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// read in data</span></span><br><span class="line">	<span class="keyword">int</span> N, K, M, hh, mm, ss;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;N);</span><br><span class="line">	<span class="built_in">vector</span>&lt;customer&gt; cus(N);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; N; ++n) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d:%d:%d %d %d"</span>, &amp;hh, &amp;mm, &amp;ss, &amp;cus[n].play, &amp;cus[n].isVip);</span><br><span class="line">		cus[n].arr = hh * <span class="number">3600</span> + mm * <span class="number">60</span> + ss;</span><br><span class="line">		cus[n].play *= <span class="number">60</span>;</span><br><span class="line">		<span class="keyword">if</span> (cus[n].play &gt; <span class="number">7200</span>) cus[n].play = <span class="number">7200</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;K, &amp;M);</span><br><span class="line">	<span class="built_in">vector</span>&lt;table&gt; tabs(K + <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vipTabsIdx(M);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; M; ++m) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;vipTabsIdx[m]);</span><br><span class="line">		tabs[vipTabsIdx[m]].isVip = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// init tables queue</span></span><br><span class="line">	<span class="built_in">set</span>&lt;table&gt; tabQ, vipTabQ;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= K; ++k) &#123;</span><br><span class="line">		tabs[k].idx = k;</span><br><span class="line">		tabQ.insert(tabs[k]);</span><br><span class="line">		<span class="keyword">if</span> (tabs[k].isVip) vipTabQ.insert(tabs[k]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// sort customers by arrive time</span></span><br><span class="line">	sort(cus.begin(), cus.end(), cmpByArr);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// assign table to customer</span></span><br><span class="line">	<span class="keyword">int</span> cusIdx = <span class="number">0</span>, vipCusIdx = getNextVipCusIdx(cusIdx, cus);</span><br><span class="line">	<span class="keyword">while</span> (cusIdx &lt; N) &#123;</span><br><span class="line">		<span class="comment">// break if customers cannot get a table before the closing time</span></span><br><span class="line">		<span class="keyword">if</span> (cus[cusIdx].arr &gt;= <span class="number">75600</span> || tabQ.begin()-&gt;avail &gt;= <span class="number">75600</span>) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// jump if served</span></span><br><span class="line">		<span class="keyword">if</span> (cus[cusIdx].ser &lt; <span class="number">86400</span>) &#123; cusIdx++; <span class="keyword">continue</span>; &#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// update next vip customer index</span></span><br><span class="line">		<span class="keyword">if</span> (vipCusIdx &lt; cusIdx) vipCusIdx = getNextVipCusIdx(cusIdx, cus);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// if a vip table</span></span><br><span class="line">		<span class="keyword">if</span> (tabQ.begin()-&gt;isVip) &#123;</span><br><span class="line">			<span class="comment">// check whether there is a vip customer waiting in queue</span></span><br><span class="line">			<span class="comment">// A vip customer wait in queue</span></span><br><span class="line">			<span class="keyword">if</span> (cusIdx != vipCusIdx &amp;&amp; vipCusIdx != <span class="number">-1</span> &amp;&amp; cus[vipCusIdx].arr &lt;= tabQ.begin()-&gt;avail) &#123;</span><br><span class="line">				serCustomerWithTable(vipCusIdx, tabQ.begin()-&gt;idx, cus, tabs, tabQ, vipTabQ);</span><br><span class="line">				vipCusIdx = getNextVipCusIdx(vipCusIdx + <span class="number">1</span>, cus);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">// no vip customer wait in queue or current customer is a VIP customer</span></span><br><span class="line">            serCustomerWithTable(cusIdx, tabQ.begin()-&gt;idx, cus, tabs, tabQ, vipTabQ);</span><br><span class="line">            cusIdx++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// not a vip table</span></span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// current customer is a vip customer, check whether there is a vip table available</span></span><br><span class="line">			<span class="keyword">if</span> (cus[cusIdx].isVip &amp;&amp; vipTabQ.begin()-&gt;avail &lt;= cus[cusIdx].arr)</span><br><span class="line">				serCustomerWithTable(cusIdx, vipTabQ.begin()-&gt;idx, cus, tabs, tabQ, vipTabQ);</span><br><span class="line">			<span class="comment">// not vip customer or no vip table available</span></span><br><span class="line">			<span class="keyword">else</span> serCustomerWithTable(cusIdx, tabQ.begin()-&gt;idx, cus, tabs, tabQ, vipTabQ);</span><br><span class="line">			cusIdx++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// sort customers by serve time</span></span><br><span class="line">	sort(cus.begin(), cus.end(), cmpBySer);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// output the answer</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">0</span>; n &lt; N; ++n) &#123;</span><br><span class="line">		<span class="keyword">if</span> (cus[n].ser &gt;= <span class="number">75600</span>) <span class="keyword">break</span>;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%02d:%02d:%02d %02d:%02d:%02d %d\n"</span>,</span><br><span class="line">			cus[n].arr / <span class="number">3600</span>, (cus[n].arr % <span class="number">3600</span>) / <span class="number">60</span>, cus[n].arr % <span class="number">60</span>,</span><br><span class="line">			cus[n].ser / <span class="number">3600</span>, (cus[n].ser % <span class="number">3600</span>) / <span class="number">60</span>, cus[n].ser % <span class="number">60</span>,</span><br><span class="line">			cus[n].wait);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt; K; ++k) <span class="built_in">printf</span>(<span class="string">"%d "</span>, tabs[k].cnt);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, tabs[K].cnt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; solution(); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><p>[^1]: <a href="https://www.liuchuo.net/archives/2955" target="_blank" rel="noopener">柳婼 の blog - 1026. Table Tennis (30)-PAT甲级真题（模拟）</a></p>
+</li>
+<li><p>[^2]: <a href="https://blog.csdn.net/jmlikun/article/details/49821845" target="_blank" rel="noopener">SCDN博客 - siukwan - 1026. Table Tennis (30)</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com2020/03/28/PAT甲级真题-1075-PAT-Judge/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -271,6 +489,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="categories/编程之旅/" itemprop="url" rel="index">
+                    <span itemprop="name">编程之旅</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -301,7 +541,7 @@
         
           
             <h2 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h2><p><a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805393241260032" target="_blank" rel="noopener">https://pintia.cn/problem-sets/994805342720868352/problems/994805393241260032</a></p>
-<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="description"><a href="#description" class="headerlink" title="description"></a>description</h3><p>The ranklist of PAT is generated from the status list, which shows the scores of the submissions. This time you are supposed to generate the ranklist for PAT.</p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>The ranklist of PAT is generated from the status list, which shows the scores of the submissions. This time you are supposed to generate the ranklist for PAT.</p>
 <h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h3><p>Each input file contains one test case. For each case, the first line contains 3 positive integers, $N$ ($\leq10^4$), the total number of users, $K$ ($\leq5$), the total number of problems, and $M$ ($\leq10^5$), the total number of submissions. It is then assumed that the user id’s are 5-digit numbers from 00001 to $N$, and the problem id’s are from 1 to $K$. The next line contains $K$ positive integers p[i] (i=1, …, K), where p[i] corresponds to the full mark of the i-th problem. Then $M$ lines follow, each gives the information of a submission in the following format:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user_id problem_id partial_score_obtained</span><br></pre></td></tr></table></figure></p>
 <p>where partial_score_obtained is either −1 if the submission cannot even pass the compiler, or is an integer in the range [0, p[problem_id]]. All the numbers in a line are separated by a space.</p>
 <h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h3><p>For each test case, you are supposed to output the ranklist in the following format:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rank user_id total_score s[1] ... s[K]</span><br></pre></td></tr></table></figure></p>
@@ -411,6 +651,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="categories/编程之旅/" itemprop="url" rel="index">
+                    <span itemprop="name">编程之旅</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -543,22 +805,31 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
             
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">5</span>
+                <a href="tags/index.html">
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
