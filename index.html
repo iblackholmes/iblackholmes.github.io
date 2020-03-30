@@ -238,6 +238,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com2020/03/30/PAT甲级真题-1020-Tree-Traversals/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="iblackholmes">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="IBLACKHOLMES">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="2020/03/30/PAT甲级真题-1020-Tree-Traversals/" itemprop="url">PAT甲级真题-1020 Tree Traversals</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-30T23:43:19+08:00">
+                2020-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="categories/编程之旅/" itemprop="url" rel="index">
+                    <span itemprop="name">编程之旅</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h2><p><a href="https://pintia.cn/problem-sets/994805342720868352/problems/994805485033603072" target="_blank" rel="noopener">https://pintia.cn/problem-sets/994805342720868352/problems/994805485033603072</a></p>
+<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Suppose that all the keys in a binary tree are distinct positive integers. Given the postorder and inorder traversal sequences, you are supposed to output the level order traversal sequence of the corresponding binary tree.</p>
+<h3 id="Input-Specification"><a href="#Input-Specification" class="headerlink" title="Input Specification"></a>Input Specification</h3><p>Each input file contains one test case. For each case, the first line gives a positive integer $N$ ($\leq$30), the total number of nodes in the binary tree. The second line gives the postorder sequence and the third line gives the inorder sequence. All the numbers in a line are separated by a space.</p>
+<h3 id="Output-Specification"><a href="#Output-Specification" class="headerlink" title="Output Specification"></a>Output Specification</h3><p>For each test case, print in one line the level order traversal sequence of the corresponding binary tree. All the numbers in a line must be separated by exactly one space, and there must be no extra space at the end of the line.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">7</span><br><span class="line">2 3 1 5 7 6 4</span><br><span class="line">1 2 3 4 5 6 7</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4 1 6 3 5 7 2</span><br></pre></td></tr></table></figure>
+<h2 id="分析与思路"><a href="#分析与思路" class="headerlink" title="分析与思路"></a>分析与思路</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>假设树的键值唯一，给出树的后序遍历和中序遍历，输出树的层次遍历。(后序中序转层序)</p>
+<blockquote>
+<p>类似题型：</p>
+<ol>
+<li><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">LeetCode P105 Construct Binary Tree from Preorder and Inorder Traversal</a></li>
+<li><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">LeetCode P106 Construct Binary Tree from Inorder and Postorder Traversal</a></li>
+</ol>
+</blockquote>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><h4 id="最基本的方法——划分法"><a href="#最基本的方法——划分法" class="headerlink" title="最基本的方法——划分法"></a>最基本的方法——划分法</h4><p>已知树的后序遍历为<kbd>L</kbd><kbd>R</kbd><kbd>⭕</kbd>，中序遍历为<kbd>L</kbd><kbd>⭕</kbd><kbd>R</kbd>。因此可以先通过后序遍历序列确定当前子树根节点的value，再找到根节点value位于中序遍历序列的位置，由此可以推断出左右子树的长度，递归即可求解。</p>
+<p>这种方法有两个方向可以优化</p>
+<ol>
+<li>再递归构造树前，先用一个map存储中序遍历序列，这样在确定根节点value位于中序遍历序列的位置时不用再循环一遍查找</li>
+<li>不必造树[^2]，给node新增一个index属性，记录其在层次遍历中的位置，在递归遍历过程中更新index值即可，结束便利后排序即为中序遍历序列</li>
+</ol>
+<h4 id="删点法——O-n-1"><a href="#删点法——O-n-1" class="headerlink" title="删点法——O(n)[^1]"></a>删点法——O(n)[^1]</h4><p>实际上是以<kbd>⭕</kbd><kbd>R</kbd><kbd>L</kbd>方式遍历构造树</p>
+<blockquote>
+<p>对于前序中序造树，则是以<kbd>⭕</kbd><kbd>L</kbd><kbd>R</kbd>方式遍历构造树</p>
+</blockquote>
+<p>需要注意的是，递归构造前，需要给中序遍历序列<strong>头部</strong>添加一个哨兵元素(对于前序中序造树，在中序遍历序列<strong>尾部</strong>添加)</p>
+<p>这里以in: [1,2,3]，post: [1,3,2]为例，首先为in头部添加哨兵元素-1，代码运行效果如下：<br><img src="/2020/03/30/PAT甲级真题-1020-Tree-Traversals/001.jpg" title="效果图"></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">	int val;</span><br><span class="line">	node* L = nullptr, * R = nullptr;</span><br><span class="line">	node(int v) &#123; val = v; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">node* buildTreeWithInAndPost(int postL, int postR, int inL, int inR, vector&lt;int&gt;&amp; post, vector&lt;int&gt;&amp; in, node* root) &#123;</span><br><span class="line">	if (postL &gt;= postR || inL &gt;= inR) return nullptr;</span><br><span class="line">	root = new node(post[postR - 1]);</span><br><span class="line"></span><br><span class="line">	int idx = inL;</span><br><span class="line">	while (idx &lt; inR &amp;&amp; in[idx] != post[postR - 1]) idx++;</span><br><span class="line">	root-&gt;L = buildTreeWithInAndPost(postL, postR - inR + idx, inL, idx, post, in, root-&gt;L);</span><br><span class="line">	root-&gt;R = buildTreeWithInAndPost(postL + idx - inL, postR - 1, idx + 1, inR, post, in, root-&gt;R);</span><br><span class="line"></span><br><span class="line">	return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solution() &#123;</span><br><span class="line">	int N;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">	vector&lt;int&gt; post(N), in(N);</span><br><span class="line">	for (int n = 0; n &lt; N; ++n) scanf(&quot;%d&quot;, &amp;post[n]);</span><br><span class="line">	for (int n = 0; n &lt; N; ++n) scanf(&quot;%d&quot;, &amp;in[n]);</span><br><span class="line"></span><br><span class="line">	node* root = nullptr;</span><br><span class="line">	root = buildTreeWithInAndPost(0, N, 0, N, post, in, root);</span><br><span class="line"></span><br><span class="line">	vector&lt;node*&gt; ans;</span><br><span class="line">	if (root != nullptr) &#123;</span><br><span class="line">		printf(&quot;%d&quot;, root-&gt;val);</span><br><span class="line">		if (root-&gt;L != nullptr) ans.push_back(root-&gt;L);</span><br><span class="line">		if (root-&gt;R != nullptr) ans.push_back(root-&gt;R);</span><br><span class="line">	&#125;</span><br><span class="line">	while (!ans.empty()) &#123;</span><br><span class="line">		node* tmp = ans[0];</span><br><span class="line">		ans.erase(ans.begin());</span><br><span class="line">		if (tmp == nullptr) continue;</span><br><span class="line">		printf(&quot; %d&quot;, tmp-&gt;val);</span><br><span class="line">		if (tmp-&gt;L != nullptr) ans.push_back(tmp-&gt;L);</span><br><span class="line">		if (tmp-&gt;R != nullptr) ans.push_back(tmp-&gt;R);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删点法"><a href="#删点法" class="headerlink" title="删点法"></a>删点法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct node &#123;</span><br><span class="line">	int val;</span><br><span class="line">	node* L = nullptr, * R = nullptr;</span><br><span class="line">	node(int v) &#123; val = v; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">node* buildTreeWithInAndPost(int inOrderStopVal, vector&lt;int&gt;&amp; in, vector&lt;int&gt;&amp; post, node* root) &#123;</span><br><span class="line">	if (in[in.size() - 1] == inOrderStopVal) return nullptr;</span><br><span class="line">	root = new node(post[post.size() - 1]);</span><br><span class="line">	post.pop_back();</span><br><span class="line">	root-&gt;R = buildTreeWithInAndPost(root-&gt;val, in, post, root-&gt;R);</span><br><span class="line">	in.pop_back();</span><br><span class="line">	root-&gt;L = buildTreeWithInAndPost(inOrderStopVal, in, post, root-&gt;L);</span><br><span class="line">	return root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solution() &#123;</span><br><span class="line">	int N;</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;N);</span><br><span class="line">	vector&lt;int&gt; post(N), in(N);</span><br><span class="line">	for (int n = 0; n &lt; N; ++n) scanf(&quot;%d&quot;, &amp;post[n]);</span><br><span class="line">	for (int n = 0; n &lt; N; ++n) scanf(&quot;%d&quot;, &amp;in[n]);</span><br><span class="line"></span><br><span class="line">	node* root = nullptr;</span><br><span class="line">	in.insert(in.begin(), 0x80000000);</span><br><span class="line">	root = buildTreeWithInAndPost(0x80000000, in, post, root);</span><br><span class="line"></span><br><span class="line">	vector&lt;node*&gt; ans;</span><br><span class="line">	if (root != nullptr) &#123;</span><br><span class="line">		printf(&quot;%d&quot;, root-&gt;val);</span><br><span class="line">		if (root-&gt;L != nullptr) ans.push_back(root-&gt;L);</span><br><span class="line">		if (root-&gt;R != nullptr) ans.push_back(root-&gt;R);</span><br><span class="line">	&#125;</span><br><span class="line">	while (!ans.empty()) &#123;</span><br><span class="line">		node* tmp = ans[0];</span><br><span class="line">		ans.erase(ans.begin());</span><br><span class="line">		if (tmp == nullptr) continue;</span><br><span class="line">		printf(&quot; %d&quot;, tmp-&gt;val);</span><br><span class="line">		if (tmp-&gt;L != nullptr) ans.push_back(tmp-&gt;L);</span><br><span class="line">		if (tmp-&gt;R != nullptr) ans.push_back(tmp-&gt;R);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li>[^1]: <a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34543/Simple-O(n" target="_blank" rel="noopener">LeetCode P105 StefanPochmann’s solution: Simple O(n) without map</a>-without-map)</li>
+<li>[^2]: <a href="https://www.liuchuo.net/archives/2100" target="_blank" rel="noopener">柳婼 の blog - 1020. Tree Traversals (25)-PAT甲级真题（后序中序转层序）</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com2020/03/30/PAT甲级真题-1026-Table-Tennis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -807,7 +980,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -829,7 +1002,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
