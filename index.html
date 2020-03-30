@@ -127,6 +127,15 @@
 
 
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '[object Object]', 'auto');
+  ga('send', 'pageview');
+</script>
+
 
 
 
@@ -352,15 +361,10 @@
 </li>
 </ol>
 <p>这里的题解采用方法二：桌子选人。（采用方法一的题解看<a href="https://blog.csdn.net/jmlikun/article/details/49821845" target="_blank" rel="noopener">这里</a>[^2]）.</p>
-<h4 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h4><ul>
-<li><p>首先设定两个结构体：<kbd>customer</kbd>和<kbd>table</kbd>，分别存储顾客和球桌的相关信息。因为输入的顾客信息是无序的，需要根据顾客的到达时间排序。</p>
-</li>
-<li><p>这里通过set模拟优先队列，优先级设为[可用时间最早，序号最小]。设立两个优先队列：<kbd>tabQ</kbd>和<kbd>vipTabQ</kbd>，分别储存所有桌子的优先队列和VIP桌子的优先队列。</p>
-</li>
-<li><p>设置<kbd>cusIdx</kbd>和<kbd>vipCusIdx</kbd>，分别指向下一个最早的顾客，和从cusIdx开始的下一个最早VIP顾客。</p>
-</li>
-</ul>
-<h4 id="分配流程"><a href="#分配流程" class="headerlink" title="分配流程"></a>分配流程</h4><ul>
+<h4 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h4><p>首先设定两个结构体：<kbd>customer</kbd>和<kbd>table</kbd>，分别存储顾客和球桌的相关信息。因为输入的顾客信息是无序的，需要根据顾客的到达时间排序。</p>
+<p>这里通过set模拟优先队列，优先级设为[可用时间最早，序号最小]。设立两个优先队列：<kbd>tabQ</kbd>和<kbd>vipTabQ</kbd>，分别储存所有桌子的优先队列和VIP桌子的优先队列。</p>
+<p>设置<kbd>cusIdx</kbd>和<kbd>vipCusIdx</kbd>，分别指向下一个最早的顾客，和从cusIdx开始的下一个最早VIP顾客。</p>
+<h4 id="分配流程"><a href="#分配流程" class="headerlink" title="分配流程"></a>分配流程</h4><ol>
 <li>循环初始判断：<ul>
 <li>当cusIdx大于N(说明所有顾客都服务完)，跳出循环</li>
 <li>当下一个顾客到达的时间超过21:00，或者桌子的最早可用时间超过21:00(说明往后的顾客都不能在俱乐部关门之前获得服务)，则跳出循环。</li>
@@ -378,7 +382,7 @@
 <li>若当前顾客非VIP顾客，或者无VIP桌子空闲，将当前桌子分配给该顾客</li>
 </ul>
 </li>
-</ul>
+</ol>
 <p>分配完后，通过顾客被服务时间再进行排序，输出即可。</p>
 <h4 id="血泪教训"><a href="#血泪教训" class="headerlink" title="血泪教训"></a>血泪教训</h4><p>最后要强调的是！！也是我被卡了很久一点的是！！顾客等待时间的进位是按照四舍五入的，也就是说大于等于30s的进一分钟，否则舍去。最后一个测试用例就是检验这个30s的。代码一刷的时候没明白，以为是逻辑有漏洞，暂时跳过这道题…二刷的时候仍然是卡在了最后一个测试点😂，实在是太过分了/(ㄒoㄒ)/！！最后是根据<a href="https://blog.csdn.net/jmlikun/article/details/49821845" target="_blank" rel="noopener">这篇博文</a>[^2]提到的测试用例才反应过来（其它比较重要的测试用例也可以看看(*\^_\^*)）</p>
 <p>简单记录一下两种实现四舍五入进位方式的方法：</p>
@@ -1075,5 +1079,9 @@
 
   
 
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
 </body>
 </html>
