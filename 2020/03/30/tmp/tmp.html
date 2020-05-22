@@ -1,0 +1,693 @@
+<html lang="zh-CN">
+<head>
+
+<!--/公共jsp -->
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<!-- 用来禁止浏览器缓存，使得每次请求test.html都从服务器下载最新版本 -->
+<!-- Cache-Control 用于控制HTTP缓存 -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<!-- Pragma(cache模式) 是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出  -->
+<meta http-equiv="Pragma" content="no-cache">
+<!-- Expires(期限) 可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。 -->
+<meta http-equiv="Expires" content="0">
+<meta name="format-detection" content="telephone=yes">
+
+<!-- <script>
+        var SERVER_PATH = "./css";
+        var pageMeta = {
+            "datas":    {},
+            "models":   [],
+            "routes":   {},
+            "params":   {
+                "curDate":  "2020-05-22 08:11:15",
+                "userId":   "2160201075",
+                "userName": "梁珂",
+                "roleId":   "e700f0d51e224789b582801505ee6ed9"
+            }
+        } ;
+        var contextPath = "/xsfw";
+
+
+        var rootPath = "/xsfw";
+        rootPath = rootPath.replace("http:", window.location.protocol);
+        rootPath = rootPath.replace(":80/", window.location.port+"/");
+        rootPath = rootPath.replace(":443/", window.location.port+"/");
+
+        var hostPath = "http://eps.xjtu.edu.cn:80/xsfw";
+        hostPath = hostPath.replace("http:", window.location.protocol);
+        hostPath = hostPath.replace(":80/", window.location.port+"/");
+        hostPath = hostPath.replace(":443/", window.location.port+"/");
+
+        var path ="/xsfw";
+        path = path.replace("http:", window.location.protocol);
+        path = path.replace(":80/", window.location.port+"/");
+        path = path.replace(":443/", window.location.port+"/");
+
+
+        window.WIS_CONFIG = {
+            ROOT_PATH: rootPath,
+            PATH: path,
+            APPID: "5819277804583044",
+            APPNAME: "swmfxyqglapp",
+            RES_SERVER: "./css",
+            HOST_PATH:hostPath
+        }
+        window.WIS_CONFIG.STATIC_TIMESTAMP = "v";
+        var userId = pageMeta.params.userId;
+        var roleId = pageMeta.params.roleId;
+        window.APP_CONFIG = {};
+        var SWROOT_PATH = "http://eps.xjtu.edu.cn:80/xsfw/sys/swpubapp";
+</script> -->
+
+<link rel="stylesheet" href="./css/bh-lib.min.css">
+<link rel="stylesheet" href="./css/iconfont.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/mob.css">
+<link rel="stylesheet" href="./css/skin.css">
+<link rel="stylesheet" href="./css/style.min.css">
+<link rel="stylesheet" href="./css/cropper.min.css">
+<script src="./js/jweixin-1.2.0.js"></script>
+<script src="./js/require.js"></script>
+<script src="./js/mobutil.js"></script>
+<script src="./js/spriteFrame.js"></script>
+<script src="./js/qrcode.js"></script>
+<script src="./js/bh_utils_mobile.js"></script>
+
+<script>
+    var curDate = pageMeta.params.curDate;
+    var userName = pageMeta.params.userName;
+    var sftoon = navigator.userAgent.toLowerCase().indexOf("toongine")!=-1;
+</script>
+<script>
+    Date.prototype.format = function (fmt) {
+        var o = {
+            // "y+": this.getFullYear, //年
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds() //秒
+        };
+        if (/(y+)/.test(fmt)) 
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) 
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+    //使用定时器每秒向div写入当前时间
+    setInterval("document.getElementById('MonAndDate').innerHTML = (new Date()).format('MM月dd日');", 1000);
+    setInterval("document.getElementById('HourMinSec').innerHTML = (new Date()).format('hh:mm:ss');", 1000);
+</script>
+<style type="text/css">
+
+/* 定义keyframe动画，命名为blink */
+@keyframes blink{
+  0%{opacity: 1;}
+  100%{opacity: 0;} 
+}
+/* 添加兼容性前缀 */
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 1; }
+    50.01% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% {opacity: 1; } 
+    100% { opacity: 0;}
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+/* 定义blink类*/
+.blink{
+    color: #dd4814;
+    animation: blink 1s linear infinite;  
+    /* 其它浏览器兼容性前缀 */
+    -webkit-animation: blink 1s linear infinite;
+    -moz-animation: blink 1s linear infinite;
+    -ms-animation: blink 1s linear infinite;
+    -o-animation: blink 1s linear infinite;
+}
+.detailmore{
+color: #52C7CA;
+float:right;
+line-height:50px;
+font-size: 12px;
+}
+</style>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="./js/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="vue" src="./js/vue.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="vueRouter" src="./js/vue-router.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="MINT" src="./js/index.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="axios" src="./js/axios.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="spriteUtils" src="./js/spriteUtil.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="draggable" src="./js/vuedraggable.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="cropper" src="./js/cropper.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="emap-mobile" src="./js/emap-mobile.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="emapMin" src="./js/emapMin.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="pagelog" src="./js/sentry.min.js"></script>
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="sortable" src="./js/Sortable.min.js"></script>
+
+<style type="text/css">
+</style><style type="text/css">
+.bh-avatar-upload[data-v-19abc8d6] {
+    display: inline-block;
+}
+.bh-emapAvatar-upload[data-v-19abc8d6] {
+    position: relative;
+    display: block;
+}
+.bh-emapAvatar-upload input[data-v-19abc8d6]{
+    opacity: 0;
+    position:absolute;
+    top:0;
+    left:0;
+}
+.avatar-buttons[data-v-19abc8d6] {
+    width:100%;
+    position: absolute;
+    /* bottom: 0; */
+    right: 0;
+}
+.avatar-button[data-v-19abc8d6] {
+    width:50%;
+    float:left;
+}
+</style><style type="text/css">
+.emapm-form textarea,.emapm-form input,.emapm-form span{
+    font-family: "PingFang SC","Microsoft YaHei","Times New Roman";
+}
+.emapm-form .mint-cell-group > .emapm-item .mint-cell:first-child .mint-cell-wrapper {
+    border-top: .5PX solid #e8e8e8;
+}
+.emapm-form .mint-cell .mint-cell-value {
+    padding: 8px 0;
+}
+.emapm-form .select-value {
+     text-align: left; /* form 人事 孙新 add by jbxu 2018-11-26 */
+}
+.emapm-item {
+    position: relative;
+}
+.emapm-item .mint-field .mint-cell-value.mt-color-grey-lv3 input {
+    color: inherit;
+}
+.emapm-form .mint-cell-group .emapm-item:first-child .mint-cell-wrapper {
+    border-top: none;
+}
+/* .emapm-form .mint-cell-group-title {
+    padding: 16px 20px 16px;
+    font-size: 16px;
+    line-height: 16px;
+} 
+.emapm-form .mint-cell-group-title:before {
+    content: "｜";
+    color: #52C7CA;
+    font-size: 12px;
+    position: relative;
+    top: -2px;
+    left: -4px;
+}
+
+.emapm-form .cellgroup-title-hidden .mint-cell-group-title:before {
+    content: "";
+    font-size: 0
+} */
+.emapm-form .mint-cell-group-title {
+    /* font-weight: 600;
+    color: #1E2329; */
+    padding: 12px 20px 12px;
+}
+
+
+/* .emapm-form.emapm-form-readonly .mint-hairline--top-bottom {
+    position: inherit !important;
+} */
+.emapm-form input::-webkit-input-placeholder {
+    font-weight: 400 !important;
+}
+.emapm-form input::-webkit-input-placeholder {
+    font-weight: 400 !important;
+}
+.emapm-form input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    font-weight: 400 !important;
+}
+.emapm-form input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    font-weight: 400 !important;
+}
+.emapm-form input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-weight: 400 !important;
+}
+.emapm-form input {
+    font-weight: 400 !important;
+}
+.emapm-form input:focus {
+    font-weight: 400 !important;
+}
+
+
+/* 只读表单样式设置区 */
+
+/* .emapm-form.emapm-form-readonly .mint-cell-group-title::before{
+    content: ''
+} */
+.emapm-form.emapm-form-readonly .mint-cell-group-title {
+    padding: 16px 20px 16px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #1E2329;
+    background-color: #fff !important;
+    /* padding: 10px 20px 10px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #92969c; */
+}
+.emapm-form.emapm-form-readonly .emapm-items {
+    /* margin-bottom:10px; 
+    border-top: solid 1px #f4f4f4;*/
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .mint-cell {
+    min-height:0px;
+    padding:6px 0;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .mint-cell-group-content .emapm-item .mint-cell .mint-cell-wrapper{
+    border-top-style: none;
+    font-size: 14px;
+}
+.emapm-form.emapm-form-readonly .mint-cell .mint-cell-value {
+    padding: 0;
+}
+.emapm-form.emapm-form-readonly .mint-cell .mint-cell-value .em-select-value,.emapm-form.emapm-form-readonly .mint-cell .mint-cell-value .mt-cell-diy-span {
+    color: #1E2329 !important;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group-content {
+    /* padding-top:16px; */
+    padding-bottom:10px;
+}
+.emapm-form.emapm-form-readonly .mint-hairline--top-bottom:after {
+    border-bottom-width:1px;
+    border-top-width:0;
+    border-color:#e8e8e8;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-hastitle + .mint-cell-group-content .emapm-item:first-child {
+    padding-top:10px;
+    border-top:solid 1px #f4f4f4;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-notitle {
+    /* border-bottom:solid 1px #f4f4f4; */
+    padding: 0;
+}
+.emapm-form.emapm-form-readonly .mint-cell-group .emap-cellgroup-notitle + .mint-cell-group-content .emapm-item:first-child{
+    /* border-top:solid 1px #f4f4f4; */
+    padding-top:16px;
+}
+.emapm-form.emapm-form-readonly .em-select-value,.emapm-form.emapm-form-readonly .mt-cell-diy-span {
+    line-height: 16px;
+}
+.emapm-form.emapm-form-readonly .emapm-divide {
+    height:10px;border-bottom: solid 1px #f4f4f4;
+}
+</style><style type="text/css">
+
+</style><style type="text/css">
+.__em-textarea textarea[readonly="readonly"] {
+    resize: none;
+}
+.emapm-form.emapm-form-readonly  .mint-cell-group .mint-cell-group-content .emapm-item .__em-textarea  .mint-cell .mint-cell-wrapper{
+    align-items:baseline !important;
+}
+/* .emapm-form.emapm-form-readonly  .mint-cell-group .mint-cell-group-content .emapm-item .__em-textarea.__em-textarea-readonly {
+    background-color:#345678;
+} */
+/* .__em-textarea .mint-cell-wrapper {
+    align-items: baseline;
+} */
+.__em-textarea .mint-textarea .mint-cell-wrapper .mint-cell-value{
+    width:100%;
+}
+.mt-cell-diy-span {
+    word-break: break-all;
+    /* text-align: right; */
+}
+</style><style type="text/css">
+
+</style><style type="text/css">
+.selector-pick-container .mint-box-group .mint-cell-group .mint-cell-group-content .mint-cell:first-child .mint-cell-wrapper[data-v-6c673692]{
+    border-top:none;
+}
+</style><style type="text/css">
+.vf-h {
+    overflow: hidden !important;
+}
+</style><style type="text/css">
+.mint-selected-footer.__emapm[data-v-5b3d36f0] {
+    z-index: 2;
+    position: absolute;
+}
+.mint-selected-footer-list-mask[data-v-5b3d36f0] {
+    background-color: rgba(0, 0, 0, .5);
+}
+.mint-selected-footer-list-container[data-v-5b3d36f0]{
+    background-color: white;
+}
+</style><style type="text/css">
+.slip-enter-active[data-v-1e05a942],
+.slip-leave-active[data-v-1e05a942] {
+    transition: transform .25s
+}
+.slip-enter[data-v-1e05a942],
+.slip-leave-to[data-v-1e05a942] {
+    transform: translateX(100%);
+}
+.selector-pick-container[data-v-1e05a942] {
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: #f9f9f9;
+    z-index: 999;
+}
+</style><style type="text/css">
+
+</style><style type="text/css">
+.emapm-date-picker .mint-picker-column__frame {
+    position: absolute;
+}
+</style><style type="text/css">
+.__em-selectlist .mint-picker-column__frame {
+    position: absolute;
+}
+.__em-selectlist .__em-selectlist-group {
+    max-height: 250px;
+    overflow: auto;
+}
+</style><style type="text/css">
+.emapm-upload-imgs[data-v-a912844a] {
+    padding-bottom: 0px;
+}
+</style><style type="text/css">
+.confirm_btn_class {
+    font-size: 14px;
+}
+.cancel_btn_class {
+    font-size: 14px;
+}
+</style><style type="text/css">
+.bh-upload-wrap[data-v-615b2308] {
+    position: relative;
+    /* overflow: hidden; */
+    width: 100%;
+    /* display: flex!important; */
+}
+.bh-upload_required[data-v-615b2308]{
+    color: red;
+}
+.upload_item[data-v-615b2308] {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    margin: 0px 8px 12px 0;
+    position: relative;
+    vertical-align: top;
+}
+.upload_item_none[data-v-615b2308]{
+    line-height: 75px;
+    margin: 0;
+}
+.cancel_upload_img[data-v-615b2308] {
+    position: absolute;
+    top: -13px;
+    right: -7px;
+    font-size: 18px;
+}
+.upload_img[data-v-615b2308] {
+    width: 75px;
+    height: 75px;
+}
+.upload_img_wrong[data-v-615b2308]{
+    width: 100px;
+    margin: 0;
+    line-height: 75px;
+}
+.bh-upload-wrap .color-pdf[data-v-615b2308] {
+    color: #F26666;
+}
+.bh-upload-wrap .color-doc[data-v-615b2308] {
+    color: #4A90E2;
+}
+.bh-upload-wrap .color-xlsx[data-v-615b2308] {
+    color: #A2D06B;
+}
+.bh-upload-wrap .color-ppt[data-v-615b2308] {
+    color: #F26666;
+}
+.bh-upload-wrap .color-zip[data-v-615b2308] {
+    color: #92969C;
+}
+.bh-upload-wrap .color-others[data-v-615b2308] {
+    color: #FFB950;
+}
+
+</style><style type="text/css">
+
+</style><style type="text/css">
+.__em-attachment-list[data-v-5a88c570] {
+    padding-left: 1px;
+}
+.__em-attachment-list .iconfont[data-v-5a88c570] {
+    font-size: 32px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+.__em-attachment-list-title[data-v-5a88c570] {
+    padding:8px 0;
+    /* font-size:14px; */
+}
+.__em-attachment-list .file-info[data-v-5a88c570] {
+    flex: 1;
+}
+.__em-attachment-list .color-pdf[data-v-5a88c570] {
+    color: #F26666;
+}
+.__em-attachment-list .color-doc[data-v-5a88c570] {
+    color: #4A90E2;
+}
+.__em-attachment-list .color-xlsx[data-v-5a88c570] {
+    color: #A2D06B;
+}
+.__em-attachment-list .color-ppt[data-v-5a88c570] {
+    color: #F26666;
+}
+.__em-attachment-list .color-zip[data-v-5a88c570] {
+    color: #92969C;
+}
+.__em-attachment-list .color-others[data-v-5a88c570] {
+    color: #FFB950;
+}
+.__em-file-info_size[data-v-5a88c570] {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #92969C;
+}
+.__em-file-info[data-v-5a88c570] {
+    width: calc(100% - 40px)
+}
+.__em-file-info>p[data-v-5a88c570] {
+    margin: 0;
+    padding: 1px 0 0 0;
+}
+.__em-file-info .__em-file-info_name[data-v-5a88c570] {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-bottom: 4px;
+}
+.__em-img-icon[data-v-5a88c570] {
+    height: 32px;
+    width:30px;
+    margin-right: 8px;
+}
+/* 只读表单下的设置 */
+.emapm-form.emapm-form-readonly .__em-attachment-list[data-v-5a88c570] {
+    /* border-top-width: 1px;
+    border-top-style: solid;
+    padding: 8px 0 8px 1px;
+    border-color: #E8E8E8; */
+}
+.emapm-form.emapm-form-readonly .__em-attachment-list-title[data-v-5a88c570] {
+    padding:6px 0;
+    font-size:14px;
+}
+.emapm-form.emapm-form-readonly .__em-attachment-list[data-v-5a88c570] {
+    padding-left: 0px;
+}
+</style><style type="text/css">
+.__em-attachment-list .mint-cell-title {
+    display: flex;
+    align-items: center;
+}
+</style><style type="text/css">
+
+
+</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="publicVueComponent/auditprocess/auditProcess" src="./js/auditProcess.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="publicVueComponent/nonedatas/nonedatas" src="./js/nonedatas.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="text" src="./js/text.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/jdxym/jdxym" src="./js/jdxym.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/fxsq" src="./js/fxsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/add/addFxsq" src="./js/addFxsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/add/cns" src="./js/cns.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/add/jlgj" src="./js/jlgj.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/add/fxxc" src="./js/fxxc.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/add/jkda" src="./js/jkda.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/add/editMrqk" src="./js/editMrqk.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/view/viewFxsq" src="./js/viewFxsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/view/viewjkda" src="./js/viewjkda.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/view/viewfxxc" src="./js/viewfxxc.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/view/viewjlgj" src="./js/viewjlgj.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/view/viewcns" src="./js/viewcns.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/fxsq/view/vieweditMrqk" src="./js/vieweditMrqk.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/wcsq/wcsq" src="./js/wcsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="modules/zmsq/zmsq" src="./js/zmsq.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="api" src="./js/api.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="BH_MOBILE" src="./js/BH_MIXIN_SDK.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="home" src="./js/home.js"></script></head>
+
+<body>
+<div id="app"><!----> 
+    <div class="mint-layout-container">
+        <div class="mint-layout-container fxyq_fxsq fxyq_wcsq" style="margin-bottom: 60px;">
+            <div class="mint-layout-container"><div class="sq-xslbdm-bks">
+                <div class="mint-layout-container bh-bg-color-light xszp_image">
+                    <img src="./img/getUserPhoto.do" class="mint-image" style="width: 100px; height: 130px; margin: 3px;">
+                </div> 
+                <div class="xsxx" style="width: calc(100vw - 160px);">
+                    <div>2160201075&nbsp;梁珂<span style="font-size: 14px; margin-left: 10px;">本科生</span></div> 
+                    <div>仲英书院/软件63</div>
+                </div>
+            </div> 
+            <div class="mint-layout-container modal-bak" style="display: none;">
+                <div class="mint-text mt-color-grey" style="text-align: center; font-size: 18px; color: rgb(19, 21, 45); line-height: 22px; padding-top: 20px;">
+                    <span class="mint-icon" style="color: red; position: relative; top: 3px;">
+                        <i class="iconfont mint-icon-i icon-erroroutline" style="font-size: 30px;"></i>
+                    </span>
+			            未安排返校
+                </div> 
+                <div class="mint-text mt-color-grey" style="font-size: 14px; color: rgb(118, 122, 140); line-height: 20px; padding: 30px; text-align: center;">
+                    学校暂未安排您进行返校，请耐心等待学校安排!
+                </div>
+            </div> 
+            <div class="mint-layout-container" style="display: none;">
+                <div style="background-color: white; padding-bottom: 100px; min-height: 500px;">
+                    <div style="padding: 10px 0px 0px 25px;">
+                        <div class="jkmgxsj-title">当前时间：</div> 
+                        <div>
+                            <!-- <span class="jkmgxsj-rq" id="MonAndDate">05月22日</span> 
+                            <span class="jkmgxsj-sj" id="HourMinSec">08:38:04</span> -->
+                            <!-- <span id="MonAndDate"></span> 
+                            <span id="HourMinSec"></span> -->
+                        </div>
+                    </div> 
+                    <div style="line-height: 30px; padding-top: 4px; padding-left: 25px; font-size: 14px; display: none;">
+                        外出时间
+                         <span style="color: rgb(255, 185, 80);">2020-05-22 08:00</span> 
+                         <span style="">至</span> <span style="color: rgb(255, 185, 80);">2020-05-23 18:00</span>
+                    </div> 
+                    <div class="mint-text mt-color-grey" style="line-height: 20px;">&nbsp;&nbsp;</div> 
+                    <div style="border: 1px solid rgb(232, 232, 232); width: 250px; height: 240px; margin-left: calc(50vw - 130px); margin-bottom: 8px; position: relative;">
+                        <div style="width: 170px; height: 170px; display: inline-block; margin: 40px 40px 20px;">
+                            <div id="apply_school_code" style="margin: 10px;"></div>
+                        </div> 
+                        <div style="position: absolute; top: 0px;">
+                            <img src="./img/xsjkm_bg.png" class="mint-image" style="height: 30px;">
+                        </div> 
+                        <div style="position: absolute; top: 0px; display: none;">
+                            <img src="./img/xsjkm_bg1.png" class="mint-image" style="height: 30px;">
+                        </div> 
+                        <div style="position: absolute; top: 0px; display: none;">
+                            <img src="./img/xsjkm_bg2.png" class="mint-image" style="height: 30px;">
+                        </div> 
+                        <div style="position: absolute; top: 0px; line-height: 31px; font-size: 16px; color: white; left: 35px;">
+                            本科生
+                        </div>
+                    </div> <!----> <!----> <!----> <!----> 
+                    <div style="padding-top: 0px; text-align: center; font-size: 14px; display: none;">
+		     		校园最安全，外出有风险
+                    </div> 
+                    <div style="padding-top: 2px; text-align: center; font-size: 14px; display: none;">
+		     		其他必须外出的情况
+                    </div> 
+                    <div class="mint-text header mt-color-grey" style="padding-top: 30px; display: none;">初始校园码</div>
+                </div>
+            </div> 
+            <div class="mint-layout-container OPjczlssvm" style="">
+                <div style="background-color: white; padding-bottom: 100px; min-height: 500px;">
+                    <div style="padding: 10px 0px 0px 25px;"><div class="jkmgxsj-title">当前时间：</div> 
+                    <div>
+                        <span class="jkmgxsj-rq" id="MonAndDate">05月22日</span> 
+                        <span class="jkmgxsj-sj" id="HourMinSec">08:38:04</span>
+                        <!-- <span id="MonAndDate"></span> 
+                        <span id="HourMinSec"></span> -->
+                    </div>
+                </div> 
+                <div style="line-height: 30px; padding-top: 4px; padding-left: 25px; font-size: 12px; display: none;">
+		     		尚未完成报到登记，请于
+		     		<span style="color: rgb(255, 185, 80);">2020-05-07</span> <span style="">至</span> <span style="color: rgb(255, 185, 80);">2020-12-30</span>
+		     		到校报到
+                 </div> 
+                 <div style="line-height: 30px; padding-top: 8px; padding-left: 25px; font-size: 14px;">
+		     		已于&nbsp;2020-05-20 13:04:06&nbsp;完成报到登记
+                 </div> 
+                 <div style="line-height: 30px; padding-top: 4px; padding-left: 25px; font-size: 14px;">
+		     		外出时间
+                     <span style="color: rgb(255, 185, 80);">2020-05-22 08:00</span> <span style="">至</span> <span style="color: rgb(255, 185, 80);">2020-05-23 18:00</span>
+                </div> 
+                <div class="mint-text mt-color-grey" style="line-height: 30px; display: none;">&nbsp;&nbsp;</div> 
+                <div class="mint-text mt-color-grey" style="line-height: 5px;">&nbsp;&nbsp;</div> 
+                <div style="border: 1px solid rgb(232, 232, 232); width: 250px; height: 240px; margin-left: calc(50vw - 130px); margin-bottom: 8px; position: relative;">
+                    <div style="width: 170px; height: 170px; display: inline-block; margin: 40px 40px 20px;">
+                        <div id="applyed_school_code" title="               A57156B9B1033267E053E207310AAFD3               " style="margin: 10px;">
+                            <canvas width="150" height="150" style="display: none;"></canvas>
+                            <img alt="Scan me!" src="data:image/png;base64,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" style="display: block;">
+                        </div>
+                    </div> 
+                    <div style="position: absolute; top: 0px;">
+                        <img src="./img/xsjkm_bg.png" class="mint-image" style="height: 30px;">
+                    </div> 
+                    <div style="position: absolute; top: 0px; display: none;">
+                        <img src="./img/xsjkm_bg1.png" class="mint-image" style="height: 30px;">
+                    </div> 
+                    <div style="position: absolute; top: 0px; display: none;">
+                        <img src="./img/xsjkm_bg2.png" class="mint-image" style="height: 30px;">
+                    </div> 
+                    <div style="position: absolute; top: 0px; line-height: 31px; font-size: 16px; color: white; left: 35px;">
+                        本科生
+                    </div>
+                </div> <!----> <!----> <!----> <!----> 
+                <div style="padding-top: 0px; text-align: center; font-size: 14px;">
+		     		校园最安全，外出有风险
+                </div> 
+                <div style="padding-top: 2px; text-align: center; font-size: 14px;">
+		     		其他必须外出的情况
+                </div>
+                <div style="padding-top: 2px; text-align: center; font-size: 14px; color: rgb(146, 150, 156); margin-bottom: 20px; display: none;">
+		     		请到校后向学校办理人员出示此二维码
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+<div class="mint-tabbar mt-bg-lv3 mt-bColor-grey-lv6 is-fixed">
+    <a class="mint-tab-item is-selected ">
+        <div class="mint-tab-item-icon">
+            <i class="iconfont mt-color-theme icon-daibanshiyiicon"></i><!----><!---->
+        </div>
+        <div class="mint-tab-item-label mt-color-theme">
+        交大校园码
+        </div><!---->
+    </a>
+    <a class="mint-tab-item"><div class="mint-tab-item-icon"><i class="iconfont mt-color-grey-lv3 icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-grey-lv3">
+        返校申请
+      </div><!----></a><a class="mint-tab-item"><div class="mint-tab-item-icon"><i class="iconfont mt-color-grey-lv3 icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-grey-lv3">
+        外出申请
+      </div><!----></a><a class="mint-tab-item"><div class="mint-tab-item-icon"><i class="iconfont mt-color-grey-lv3 icon-daibanshiyiicon"></i><!----><!----></div><div class="mint-tab-item-label mt-color-grey-lv3">
+        转码申请
+      </div><!----></a></div></div></div>
+
+
+
+<div class="mint-indicator" style="display: none;"><div class="mint-indicator-wrapper" style="padding: 15px;"><span class="mint-indicator-spin"><div class="mint-spinner-snake" style="border-top-color: rgb(214, 214, 214); border-left-color: rgb(214, 214, 214); border-bottom-color: rgb(214, 214, 214); height: 32px; width: 32px;"></div></span><span class="mint-indicator-text" style="display: none;"></span></div><div class="mint-indicator-mask"></div></div></body></html>
